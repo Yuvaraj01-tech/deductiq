@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DeductIQ is the autonomous revenue recovery engine for CPG suppliers. Reconciles multi-source ERP, EDI, POD records, builds evidence graphs, and executes self-healing dispute recovery.">
+  <title>DeductIQ — The Autonomous Revenue Recovery Engine | Enterprise B2B SaaS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <!-- Fallback direct link for static preview -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="app-sidebar">
+      <div class="brand-section">
+        <div class="brand-logo-icon">DQ</div>
+        <div class="brand-meta">
+          <h1>DeductIQ</h1>
+          <span>Autonomous Recovery</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <a class="nav-item active" id="nav-dashboard" data-tab="dashboard">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Executive Dashboard
+        </a>
+        <a class="nav-item" id="nav-ledger" data-tab="ledger">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Recovery Ledger
+          <span class="nav-badge" id="sidebar-badge-count">100</span>
+        </a>
+        <a class="nav-item" id="nav-agent" data-tab="agent">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          Autonomous Agent
+        </a>
+        <a class="nav-item" id="nav-connectors" data-tab="connectors">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          EDI & ERP Gateways
+        </a>
+        <a class="nav-item" id="nav-audit" data-tab="audit">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+          Governance & Audit
+        </a>
+        <a class="nav-item" id="nav-settings" data-tab="settings">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+          System Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-coe-card">
+        <div class="sidebar-coe-title">
+          <svg width="14" height="14" fill="none" stroke="#10b981" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          CoE Incubation Link
+        </div>
+        <div class="sidebar-coe-details">
+          <strong>Yuvaraj S (ES24AD181)</strong><br>
+          Guide: Ms. A. Ramyasri<br>
+          Erode Sengunthar Engg. College<br>
+          <em>Review I: Idea & Modeling</em>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Top Navigation Bar -->
+      <header class="top-header">
+        <div class="header-left">
+          <h2 class="page-title" id="page-header-title">Executive Revenue Overview</h2>
+          <div class="system-status-pill">
+            <span class="pulse-dot"></span>
+            Agent Engine: Active
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Persona & RBAC Switcher -->
+          <div class="persona-selector" title="Switch User Persona & Active RBAC Privileges">
+            <div class="persona-avatar" id="current-user-avatar">YS</div>
+            <div>
+              <select class="persona-select" id="persona-select" aria-label="Select User Persona">
+                <option value="admin_token_sec_9918">Yuvaraj S (Admin)</option>
+                <option value="analyst_token_sec_4421">Ms. A. Ramyasri (Analyst)</option>
+                <option value="auditor_token_sec_1102">External CPG Auditor (Auditor)</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="btn btn-secondary btn-sm" id="btn-reseed-data" title="Reset and reseed 100 benchmark deduction records">
+            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            Reseed Data
+          </button>
+
+          <button class="btn btn-primary btn-sm" id="btn-create-claim-modal">
+            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            New Deduction Claim
+          </button>
+        </div>
+      </header>
+
+      <!-- Page Views Container -->
+      <div class="page-body">
+
+        <!-- TAB 1: EXECUTIVE DASHBOARD -->
+        <section class="tab-panel active" id="panel-dashboard">
+          <!-- KPI Metrics Row -->
+          <div class="metrics-grid">
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span class="kpi-label">Total Deductions</span>
+                <div class="kpi-icon">
+                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z"/></svg>
+                </div>
+              </div>
+              <div class="kpi-value" id="stat-total-deductions">$0.00</div>
+              <div class="kpi-subtext">
+                <span id="stat-total-count">0</span> total claims identified
+              </div>
+            </div>
+
+            <div class="kpi-card emerald">
+              <div class="kpi-header">
+                <span class="kpi-label">Recovered Cash</span>
+                <div class="kpi-icon" style="color: #10b981; background: rgba(16, 185, 129, 0.15);">
+                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+              </div>
+              <div class="kpi-value" id="stat-recovered-cash">$0.00</div>
+              <div class="kpi-subtext">
+                <span class="kpi-trend-up" id="stat-net-rate">0%</span> net recovery rate
+              </div>
+            </div>
+
+            <div class="kpi-card cyan">
+              <div class="kpi-header">
+                <span class="kpi-label">Disputed Dollars</span>
+                <div class="kpi-icon" style="color: #06b6d4; background: rgba(6, 182, 212, 0.15);">
+                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+              </div>
+              <div class="kpi-value" id="stat-disputed-amount">$0.00</div>
+              <div class="kpi-subtext">
+                <span id="stat-disputed-count">0</span> claims submitted to portals
+              </div>
+            </div>
+
+            <div class="kpi-card amber">
+              <div class="kpi-header">
+                <span class="kpi-label">Value & ROI Multiplier</span>
+                <div class="kpi-icon" style="color: #f59e0b; background: rgba(245, 158, 11, 0.15);">
+                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                </div>
+              </div>
+              <div class="kpi-value" id="stat-roi-multiplier">13.3x</div>
+              <div class="kpi-subtext">
+                <span id="stat-hours-saved">0</span> human analyst hours saved
+              </div>
+            </div>
+          </div>
+
+          <!-- Secondary Grid -->
+          <div class="dashboard-grid-2">
+            <!-- Retailer Recovery Performance -->
+            <div class="dashboard-card">
+              <div class="card-title-bar">
+                <h3 class="card-title">Retailer Deduction Exposure & Recovery Rates</h3>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Real-Time Forensic Reversals</span>
+              </div>
+              <div class="retailer-list" id="dashboard-retailer-list">
+                <!-- Populated dynamically via JS -->
+                <div class="empty-state">Loading retailer analytics...</div>
+              </div>
+            </div>
+
+            <!-- Model Router & Efficiency Breakdown -->
+            <div class="dashboard-card">
+              <div class="card-title-bar">
+                <h3 class="card-title">Cognitive Model Routing</h3>
+                <span style="font-size: 0.8rem; color: var(--color-cyan);">Novelty Innovation</span>
+              </div>
+              <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px;">
+                Routes 90–95% of routine claims to deterministic SQL & domain SLMs to maintain sub-$0.02 cost per case, reserving frontier models for contractual ambiguities.
+              </p>
+              <div class="tier-routing-cards" id="dashboard-tier-list">
+                <div class="tier-item">
+                  <div>
+                    <span class="tier-badge tier-rule">Tier 1: Deterministic Rules</span>
+                    <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">Zero Token Cost • High Speed</div>
+                  </div>
+                  <strong style="color: #10b981;" id="tier-rule-count">88%</strong>
+                </div>
+                <div class="tier-item">
+                  <div>
+                    <span class="tier-badge tier-slm">Tier 2: Domain SLM (8B)</span>
+                    <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">Promo & Code Disallowance</div>
+                  </div>
+                  <strong style="color: #06b6d4;" id="tier-slm-count">8%</strong>
+                </div>
+                <div class="tier-item">
+                  <div>
+                    <span class="tier-badge tier-frontier">Tier 3: Frontier Cognitive</span>
+                    <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">Complex Contract Exceptions</div>
+                  </div>
+                  <strong style="color: #a855f7;" id="tier-frontier-count">4%</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Academic CoE Banner -->
+          <div class="dashboard-card" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.8)); border-left: 4px solid var(--color-primary);">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+              <div>
+                <h4 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 4px;">Continuous Assessment Milestone — Review I: Idea Validation & Business Modeling</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">
+                  Demonstrating technical novelty: <strong>Evidence Graph + Deterministic Reconciliation + Self-Healing Portal Skills + Outcome Learning Loop</strong>.
+                </p>
+              </div>
+              <button class="btn btn-secondary btn-sm" id="btn-view-academic-spec">
+                View Review Rubric Proof (50 Marks)
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 2: RECOVERY LEDGER (CLAIMS WORKSPACE) -->
+        <section class="tab-panel" id="panel-ledger">
+          <!-- Filters & Action Bar -->
+          <div class="table-toolbar">
+            <div class="toolbar-group">
+              <div class="search-input-wrapper">
+                <svg class="search-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <input type="text" class="search-input" id="search-claims" placeholder="Search Claim #, Invoice #, PO #, Reason..." aria-label="Search Claims">
+              </div>
+
+              <select class="select-filter" id="filter-retailer" aria-label="Filter by Retailer">
+                <option value="All">All Retailers</option>
+                <option value="Walmart">Walmart</option>
+                <option value="Target">Target</option>
+                <option value="Amazon">Amazon</option>
+                <option value="Kroger">Kroger</option>
+                <option value="Costco">Costco</option>
+              </select>
+
+              <select class="select-filter" id="filter-status" aria-label="Filter by Status">
+                <option value="All">All Statuses</option>
+                <option value="New">New</option>
+                <option value="Investigating">Investigating</option>
+                <option value="ReadyToDispute">Ready to Dispute</option>
+                <option value="Disputed">Disputed</option>
+                <option value="Approved">Approved</option>
+                <option value="Recovered">Recovered</option>
+                <option value="WrittenOff">Written Off</option>
+              </select>
+
+              <select class="select-filter" id="filter-risk" aria-label="Filter by Risk">
+                <option value="All">All Risk Levels</option>
+                <option value="Low">Low Risk</option>
+                <option value="Medium">Medium Risk</option>
+                <option value="High">High Risk</option>
+              </select>
+
+              <button class="btn btn-secondary btn-sm" id="btn-reset-filters">
+                Reset
+              </button>
+            </div>
+
+            <div class="toolbar-group">
+              <button class="btn btn-primary btn-sm" id="btn-batch-dispute" disabled title="Select rows using checkboxes to batch execute">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                Batch Auto-Dispute (<span id="batch-selected-count">0</span>)
+              </button>
+
+              <button class="btn btn-secondary btn-sm" id="btn-open-upload-modal">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                Import Claims
+              </button>
+
+              <button class="btn btn-secondary btn-sm" id="btn-export-csv" title="Download all deductions as CSV spreadsheet">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                Export CSV
+              </button>
+            </div>
+          </div>
+
+          <!-- Claims Table -->
+          <div class="table-card">
+            <div class="table-responsive">
+              <table class="data-table" id="claims-table">
+                <thead>
+                  <tr>
+                    <th style="width: 40px;"><input type="checkbox" id="select-all-claims" aria-label="Select All Claims"></th>
+                    <th class="sortable" data-sort="claim_number">Claim #</th>
+                    <th class="sortable" data-sort="retailer">Retailer</th>
+                    <th>Reason / Code</th>
+                    <th class="sortable" data-sort="amount">Deduction $</th>
+                    <th class="sortable" data-sort="win_probability">Win Rate</th>
+                    <th>Model Tier</th>
+                    <th>Status</th>
+                    <th>Proof (POD)</th>
+                    <th style="text-align: right;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="claims-table-body">
+                  <!-- Dynamic rows -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Pagination Toolbar -->
+            <div class="pagination-bar">
+              <div id="pagination-info">Showing 0 of 0 records</div>
+              <div class="pagination-controls">
+                <select class="select-filter" id="select-page-size" style="padding: 4px 8px; font-size: 0.8rem;" aria-label="Items per page">
+                  <option value="10">10 per page</option>
+                  <option value="25">25 per page</option>
+                  <option value="50">50 per page</option>
+                </select>
+                <button class="btn btn-secondary btn-sm" id="btn-prev-page" disabled>Previous</button>
+                <span id="current-page-num" style="font-weight: 600; padding: 0 8px;">1</span>
+                <button class="btn btn-secondary btn-sm" id="btn-next-page">Next</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 3: AUTONOMOUS AGENT CONSOLE -->
+        <section class="tab-panel" id="panel-agent">
+          <div class="dashboard-grid-2">
+            <div class="dashboard-card">
+              <div class="card-title-bar">
+                <h3 class="card-title">Autonomous 6-Stage Recovery Engine</h3>
+                <span class="system-status-pill"><span class="pulse-dot"></span> Ready</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">
+                Executes the complete autonomous revenue recovery loop: <strong>Investigate → Decide → Act → Verify → Recover → Learn</strong> without requiring manual analyst intervention.
+              </p>
+
+              <div style="display: flex; gap: 12px; margin-bottom: 24px;">
+                <button class="btn btn-primary" id="btn-run-all-disputes">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  Execute Autonomous Recovery on All Ready Claims
+                </button>
+                <button class="btn btn-secondary" id="btn-clear-agent-terminal">
+                  Clear Log
+                </button>
+              </div>
+
+              <!-- Live Execution Terminal -->
+              <div class="terminal-box" id="global-agent-terminal">
+                <div class="terminal-line"><span class="terminal-time">[Ready]</span> DeductIQ Autonomous Engine initialized. Awaiting dispute triggers.</div>
+                <div class="terminal-line"><span class="terminal-time">[Ready]</span> Evidence Graph compiler loaded. Retailer skill library synced (Walmart, Target, Amazon, Kroger, Costco).</div>
+              </div>
+            </div>
+
+            <!-- Self-Healing Skill Sandbox Preview -->
+            <div class="dashboard-card">
+              <div class="card-title-bar">
+                <h3 class="card-title">Self-Healing Portal Skill Library</h3>
+                <span style="font-size: 0.78rem; color: var(--color-purple);">Active Sandbox</span>
+              </div>
+              <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 14px;">
+                When retailer portal frontends mutate DOM selectors or reorder form steps, the agent does not crash. It triggers visual-semantic grounding, recovers the action, sandbox-replays, and updates the skill library.
+              </p>
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div style="background: rgba(30, 41, 59, 0.5); padding: 12px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); font-size: 0.8rem;">
+                  <strong style="color: #38bdf8;">Walmart APDP Skill:</strong> <code>#v3-action-file-claim</code> <span style="color: var(--color-success);">(Auto-healed)</span>
+                </div>
+                <div style="background: rgba(30, 41, 59, 0.5); padding: 12px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); font-size: 0.8rem;">
+                  <strong style="color: #38bdf8;">Amazon VC Dispute:</strong> <code>button[data-qa='dispute-submit']</code> <span style="color: var(--color-success);">(Stable)</span>
+                </div>
+                <div style="background: rgba(30, 41, 59, 0.5); padding: 12px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); font-size: 0.8rem;">
+                  <strong style="color: #38bdf8;">Target POL Gateway:</strong> <code>#btn-pol-dispute-v2</code> <span style="color: var(--color-success);">(Stable)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 4: EDI & ERP GATEWAYS -->
+        <section class="tab-panel" id="panel-connectors">
+          <div class="card-title-bar" style="margin-bottom: 24px;">
+            <div>
+              <h3 class="card-title">Authorized Integration Connectors</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Bi-directional EDI 812 claim feeds and ERP remittance settlement sync.</p>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="btn-test-all-connectors">Test All Endpoints</button>
+          </div>
+
+          <div class="connectors-grid">
+            <!-- Walmart -->
+            <div class="connector-card">
+              <div class="connector-header">
+                <span class="connector-name">Walmart Retail Link</span>
+                <span class="status-pill status-recovered" id="status-tag-walmart">Active</span>
+              </div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Protocols: APDP REST API / EDI 812 Credit Memo</div>
+              <div style="font-size: 0.8rem; color: var(--text-dim);" id="ping-walmart">Ping: 45ms • Auth: Verified</div>
+              <button class="btn btn-secondary btn-sm" id="btn-test-walmart" data-target="Walmart">Test Endpoint</button>
+            </div>
+
+            <!-- Target -->
+            <div class="connector-card">
+              <div class="connector-header">
+                <span class="connector-name">Target Partners Online</span>
+                <span class="status-pill status-recovered" id="status-tag-target">Active</span>
+              </div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Protocols: POL Gateway / AS2 Encrypted Stream</div>
+              <div style="font-size: 0.8rem; color: var(--text-dim);" id="ping-target">Ping: 52ms • Auth: Verified</div>
+              <button class="btn btn-secondary btn-sm" id="btn-test-target" data-target="Target">Test Endpoint</button>
+            </div>
+
+            <!-- Amazon -->
+            <div class="connector-card">
+              <div class="connector-header">
+                <span class="connector-name">Amazon Vendor Central</span>
+                <span class="status-pill status-recovered" id="status-tag-amazon">Active</span>
+              </div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Protocols: VC SP-API & Direct Browser Skill</div>
+              <div style="font-size: 0.8rem; color: var(--text-dim);" id="ping-amazon">Ping: 38ms • Auth: Verified</div>
+              <button class="btn btn-secondary btn-sm" id="btn-test-amazon" data-target="Amazon">Test Endpoint</button>
+            </div>
+
+            <!-- Kroger -->
+            <div class="connector-card">
+              <div class="connector-header">
+                <span class="connector-name">Kroger Claim Gateway</span>
+                <span class="status-pill status-recovered" id="status-tag-kroger">Active</span>
+              </div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Protocols: Supplier Hub EDI 812 / SFTP</div>
+              <div style="font-size: 0.8rem; color: var(--text-dim);" id="ping-kroger">Ping: 61ms • Auth: Verified</div>
+              <button class="btn btn-secondary btn-sm" id="btn-test-kroger" data-target="Kroger">Test Endpoint</button>
+            </div>
+
+            <!-- Costco -->
+            <div class="connector-card">
+              <div class="connector-header">
+                <span class="connector-name">Costco Supplier Portal</span>
+                <span class="status-pill status-recovered" id="status-tag-costco">Active</span>
+              </div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Protocols: Depot EDI Claims Feed</div>
+              <div style="font-size: 0.8rem; color: var(--text-dim);" id="ping-costco">Ping: 58ms • Auth: Verified</div>
+              <button class="btn btn-secondary btn-sm" id="btn-test-costco" data-target="Costco">Test Endpoint</button>
+            </div>
+
+            <!-- ERP -->
+            <div class="connector-card" style="border-color: rgba(99, 102, 241, 0.4);">
+              <div class="connector-header">
+                <span class="connector-name">Enterprise ERP (NetSuite / SAP)</span>
+                <span class="status-pill status-approved" id="status-tag-erp">Synced</span>
+              </div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Protocols: SOAP/REST Bank Remittance & CM Verification</div>
+              <div style="font-size: 0.8rem; color: var(--text-dim);" id="ping-erp">Synced Credit Memos: 89 • Latency: 42ms</div>
+              <button class="btn btn-primary btn-sm" id="btn-test-erp" data-target="ERP">Run Bidirectional Sync</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 5: AUDIT LOGS -->
+        <section class="tab-panel" id="panel-audit">
+          <div class="card-title-bar">
+            <div>
+              <h3 class="card-title">Immutable System Audit Trail</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Every autonomous agent decision, human approval, and settlement check is logged.</p>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="btn-refresh-audit">Refresh Audit Feed</button>
+          </div>
+
+          <div class="table-card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>Actor Identity</th>
+                    <th>Action</th>
+                    <th>Target Type</th>
+                    <th>Target ID</th>
+                    <th>Details</th>
+                  </tr>
+                </thead>
+                <tbody id="audit-table-body">
+                  <!-- Populated via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 6: SETTINGS -->
+        <section class="tab-panel" id="panel-settings">
+          <div class="dashboard-card" style="max-width: 800px; margin: 0 auto;">
+            <div class="card-title-bar">
+              <div>
+                <h3 class="card-title">Recovery Policies & Threshold Configuration</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Customize model routing confidence boundaries and guardrails.</p>
+              </div>
+            </div>
+
+            <form id="settings-form">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="setting-rule-threshold">Tier 1 Rule Threshold (% Win Prob)</label>
+                  <input type="number" class="form-input" id="setting-rule-threshold" min="50" max="100" value="85">
+                  <span style="font-size: 0.75rem; color: var(--text-dim);">Claims with win probability ≥ this run 100% on zero-cost rules.</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="setting-slm-threshold">Tier 2 SLM Threshold (% Win Prob)</label>
+                  <input type="number" class="form-input" id="setting-slm-threshold" min="20" max="85" value="60">
+                  <span style="font-size: 0.75rem; color: var(--text-dim);">Intermediate claims routed to fine-tuned Llama-3-8B.</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="setting-approval-limit">Human Approval Dollar Threshold ($)</label>
+                  <input type="number" class="form-input" id="setting-approval-limit" min="1000" max="1000000" value="10000">
+                  <span style="font-size: 0.75rem; color: var(--text-dim);">Disputes ≥ this value require human sign-off before submission.</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="setting-success-fee">Value Success Fee Percentage (%)</label>
+                  <input type="number" step="0.1" class="form-input" id="setting-success-fee" min="0" max="25" value="7.5">
+                  <span style="font-size: 0.75rem; color: var(--text-dim);">Percentage of verified recovered cash billed upon credit memo match.</span>
+                </div>
+
+                <div class="form-group full-width">
+                  <label class="form-label" for="setting-erp-type">ERP Integration Target</label>
+                  <select class="form-select" id="setting-erp-type">
+                    <option value="NetSuite / SAP S4HANA">NetSuite / SAP S/4HANA (Hybrid)</option>
+                    <option value="Oracle Fusion ERP">Oracle Fusion ERP</option>
+                    <option value="Microsoft Dynamics 365 F&O">Microsoft Dynamics 365 F&O</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 16px;">
+                <button type="submit" class="btn btn-primary" id="btn-save-settings">
+                  Save System Policies
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL 1: CLAIM DETAIL, EVIDENCE GRAPH & RECOVERY STUDIO -->
+  <div class="modal-overlay" id="modal-claim-detail">
+    <div class="modal-content drawer-content">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" id="drawer-claim-title">Deduction Claim Investigation</h3>
+          <span style="font-size: 0.8rem; color: var(--color-cyan);" id="drawer-claim-subtitle">Binding multi-source evidence graph...</span>
+        </div>
+        <button class="modal-close" id="btn-close-detail-modal" aria-label="Close Modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Interactive Evidence Graph Visualizer Canvas -->
+        <div class="graph-container">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <strong style="font-size: 0.9rem; color: #fff; display: flex; align-items: center; gap: 6px;">
+              <svg width="16" height="16" fill="none" stroke="#6366f1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              Multi-Source Evidence Graph
+            </strong>
+            <span class="status-pill status-recovered" id="drawer-graph-completeness">100% Documentary Completeness</span>
+          </div>
+
+          <div class="graph-nodes-grid" id="drawer-graph-nodes">
+            <!-- Dynamic nodes rendered via JS -->
+          </div>
+        </div>
+
+        <!-- 2-Column Split: Forensic Findings & Scorer + Dispute Dossier -->
+        <div class="dashboard-grid-2" style="margin-bottom: 20px;">
+          <!-- Forensic Reconciliation & Scorer -->
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 12px;">Forensic Line Reconciliation</h4>
+            <div id="drawer-forensic-findings" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px;">
+              <!-- Findings list -->
+            </div>
+
+            <div style="background: rgba(30, 41, 59, 0.4); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 14px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Predictive Recovery Probability:</span>
+                <strong style="font-size: 1.2rem; font-family: var(--font-mono); color: #34d399;" id="drawer-score-pct">96.5%</strong>
+              </div>
+              <div style="font-size: 0.8rem; color: var(--text-dim);" id="drawer-score-model">
+                Decision Model: Deterministic Forensic Engine (Tier 1 Rule)
+              </div>
+            </div>
+          </div>
+
+          <!-- Dispute Dossier View -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <h4 style="font-size: 0.95rem; font-weight: 700; color: #fff;">Formal UCC § 2-606 Rebuttal Dossier</h4>
+              <button class="btn btn-secondary btn-sm" id="btn-download-dossier-txt">
+                Download (.txt)
+              </button>
+            </div>
+            <textarea class="form-textarea" id="drawer-dossier-text" style="height: 180px; font-family: var(--font-mono); font-size: 0.78rem;"></textarea>
+            <div style="display: flex; justify-content: flex-end; margin-top: 6px;">
+              <button class="btn btn-secondary btn-sm" id="btn-save-dossier-edits">Save Dossier Edits</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Self-Healing Portal Execution Console -->
+        <div style="margin-bottom: 20px;">
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 10px;">Self-Healing Retailer Portal Execution Receipt</h4>
+          <div class="terminal-box" id="drawer-portal-logs">
+            <!-- Logs -->
+          </div>
+        </div>
+
+        <!-- Cash Settlement & Credit Memo Details -->
+        <div id="drawer-settlement-section" style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: var(--radius-md); padding: 14px; display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <strong style="color: #34d399; font-size: 0.9rem;">Verified Cash Recovery Achieved!</strong>
+              <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;" id="drawer-settlement-meta">
+                Matched to Remittance ACH-REMIT • ERP Credit Memo: CM-SAP-101
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 1.1rem; font-weight: 800; color: #fff;" id="drawer-settlement-dollars">$0.00</div>
+              <span style="font-size: 0.75rem; color: var(--color-cyan);" id="drawer-settlement-fee">Fee: $0.00</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="btn-close-detail-modal-btn">Close</button>
+        <button class="btn btn-danger btn-sm" id="btn-delete-claim-action" style="margin-right: auto;">Delete Claim</button>
+        <button class="btn btn-secondary" id="btn-writeoff-claim-action">Write Off</button>
+        <button class="btn btn-secondary" id="btn-approve-claim-action">Approve</button>
+        <button class="btn btn-success" id="btn-verify-cash-action">Verify Cash in ERP</button>
+        <button class="btn btn-primary" id="btn-run-loop-single-action">
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          Run Autonomous Loop
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: CREATE NEW CLAIM -->
+  <div class="modal-overlay" id="modal-create-claim">
+    <div class="modal-content" style="max-width: 650px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Create Ingestion Deduction Claim</h3>
+        <button class="modal-close" id="btn-close-create-modal" aria-label="Close Modal">&times;</button>
+      </div>
+      <form id="create-claim-form">
+        <div class="modal-body">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="new-claim-retailer">Retailer *</label>
+              <select class="form-select" id="new-claim-retailer" required>
+                <option value="Walmart">Walmart</option>
+                <option value="Target">Target</option>
+                <option value="Amazon">Amazon</option>
+                <option value="Kroger">Kroger</option>
+                <option value="Costco">Costco</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="new-claim-code">Deduction Code *</label>
+              <input type="text" class="form-input" id="new-claim-code" value="Code 22" required>
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="new-claim-reason">Deduction Reason *</label>
+              <input type="text" class="form-input" id="new-claim-reason" value="Goods Shortage / Undershipment" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="new-claim-amount">Deduction Amount ($) *</label>
+              <input type="number" step="0.01" class="form-input" id="new-claim-amount" value="3250.00" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="new-claim-inv-number">Invoice Number *</label>
+              <input type="text" class="form-input" id="new-claim-inv-number" value="INV-26-99210" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="new-claim-inv-date">Invoice Date *</label>
+              <input type="date" class="form-input" id="new-claim-inv-date" value="2026-09-15" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="new-claim-inv-amount">Invoice Total ($) *</label>
+              <input type="number" step="0.01" class="form-input" id="new-claim-inv-amount" value="24500.00" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="new-claim-po-number">Purchase Order # *</label>
+              <input type="text" class="form-input" id="new-claim-po-number" value="PO-WM-88210" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="new-claim-po-date">PO Date *</label>
+              <input type="date" class="form-input" id="new-claim-po-date" value="2026-09-02" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="new-claim-bol-number">Bill of Lading #</label>
+              <input type="text" class="form-input" id="new-claim-bol-number" value="BOL-773910">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="new-claim-pod-status">Proof of Delivery (POD) Stamp</label>
+              <select class="form-select" id="new-claim-pod-status">
+                <option value="Signed Clean - Stamp Verified">Signed Clean - Stamp Verified (Win ~96%)</option>
+                <option value="Exception Noted on BOL">Exception Noted on BOL (Shortage, Win ~30%)</option>
+                <option value="Unverified Receiving">Unverified Receiving</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="btn-cancel-create-claim">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-submit-new-claim">Create & Ingest Claim</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 3: IMPORT CLAIMS FILE -->
+  <div class="modal-overlay" id="modal-file-upload">
+    <div class="modal-content" style="max-width: 500px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Import Deductions CSV / JSON</h3>
+        <button class="modal-close" id="btn-close-upload-modal" aria-label="Close Modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="border: 2px dashed var(--border-accent); border-radius: var(--radius-md); padding: 30px 20px; text-align: center; margin-bottom: 16px;">
+          <svg width="40" height="40" fill="none" stroke="#6366f1" viewBox="0 0 24 24" style="margin-bottom: 12px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+          <p style="font-size: 0.9rem; color: #fff; margin-bottom: 6px;">Select or drop your CSV or JSON claims file</p>
+          <input type="file" id="input-claims-file" accept=".csv,.json" style="margin: 12px 0;">
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 0.8rem; color: var(--text-dim);">Supported: CSV, JSON (EDI 812 format)</span>
+          <a href="/api/claims/template" class="btn btn-secondary btn-sm" id="btn-download-sample-template" download>
+            Download CSV Template
+          </a>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btn-cancel-upload-file">Cancel</button>
+        <button type="button" class="btn btn-primary" id="btn-execute-file-upload">Import File</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4: RESEED CONFIRMATION -->
+  <div class="modal-overlay" id="modal-reseed-confirm">
+    <div class="modal-content" style="max-width: 450px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Confirm Database Reseed</h3>
+        <button class="modal-close" id="btn-close-reseed-modal" aria-label="Close Modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          This will reset the database and regenerate <strong>100 realistic benchmark CPG deduction records</strong> across Walmart, Target, Amazon, Kroger, and Costco with full evidence graphs, dispute dossiers, and audit trails.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btn-cancel-reseed">Cancel</button>
+        <button type="button" class="btn btn-danger" id="btn-confirm-reseed-action">Confirm & Reseed</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- App JavaScript Logic -->
+  <script src="/static/js/app.js"></script>
+  <!-- Fallback direct link for static preview -->
+  <script src="js/app.js"></script>
+</body>
+</html>
